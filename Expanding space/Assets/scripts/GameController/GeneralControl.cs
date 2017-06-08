@@ -20,7 +20,7 @@ public class GeneralControl : MonoBehaviour {
 	}
 		pauseScreen.SetActive(menuToggle);
 		if (menuToggle) {
-			Time.timeScale = 1;
-		} else { Time.timeScale = 0; }
+			Time.timeScale = 0;
+		} else { Time.timeScale = 1; }
 }
 }

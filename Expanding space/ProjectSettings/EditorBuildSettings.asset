@@ -9,3 +9,9 @@ EditorBuildSettings:
     path: Assets/scene/menu.unity
   - enabled: 1
     path: Assets/scene/main.unity
+  - enabled: 1
+    path: Assets/scene/win.unity
+  - enabled: 1
+    path: Assets/scene/lose.unity
+  - enabled: 1
+    path: Assets/scene/lose.unity

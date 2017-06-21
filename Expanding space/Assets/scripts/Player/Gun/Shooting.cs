@@ -29,18 +29,21 @@ public class Shooting : MonoBehaviour
 	public void Shoot()
 	{
 		_GunOffset = transform.position;
-		_GunOffset.x += 0.1f;
-		_GunOffset.y -= 0.55f;
+		//_GunOffset.x += 0.5f;
+		_GunOffset.y += 0.1f;
 		GameObject throwThis = Instantiate(projectile, _GunOffset, transform.rotation) as GameObject;
 		throwThis.GetComponent<Rigidbody2D>().AddForce(transform.right * shootingSpeed);
 
 
-		if (Player.GetComponent<PlayerInput>().flip)
+		if (Player.GetComponent<PlayerInput_reloaded>().flip)
 		{
+			//_GunOffset.x += 2f;
 			throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-shootingSpeed, 0));
+			
 		}
-		else if (!Player.GetComponent<PlayerInput>().flip)
+		else if (!Player.GetComponent<PlayerInput_reloaded>().flip)
 		{
+			//_GunOffset.x += 1f;
 			throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(shootingSpeed, 0));
 		}
 		//throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-shootingSpeed,0));

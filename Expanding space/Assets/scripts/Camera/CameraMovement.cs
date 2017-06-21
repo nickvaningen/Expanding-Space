@@ -35,14 +35,14 @@ public class CameraMovement : MonoBehaviour {
 			_Ypos += movespeed;
 
 		}
-		else if (Player.transform.position.y <= transform.position.y - 2)
+		else if (Player.transform.position.y <= transform.position.y - 3)
 		{
 			_Ypos -= movespeed;
 
 
 		}
 
-		transform.position = new Vector3(_Xpos,_Ypos-1,-10);
+		transform.position = new Vector3(_Xpos,_Ypos+2,-10);
 	}
 
 

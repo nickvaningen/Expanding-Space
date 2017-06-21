@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class followplayer : MonoBehaviour {
 
-
+	public GameObject Freindly
+	;
 	public GameObject target;
 	public GameObject follow;
+	public Transform spanwer;
+	public Sprite friendly;
 	public  float speed = 5;
 	public float distance = 1;
 	private float targetx;
@@ -16,15 +19,34 @@ public class followplayer : MonoBehaviour {
 	private Vector2 Q;
 	public bool flip;
 	public hitpoints health;
+	public float lookingfield;
+	SpriteRenderer sr;
 
 	void Start(){
-
+		target = GameObject.Find("Player");
+		follow = GameObject.Find("following");
+		sr = GetComponent<SpriteRenderer> ();
 	}
 	void Update () {
+		//print(target);
+
+		targetx = target.transform.position.x;
+		x = transform.position.x;
+		//print(targetx);
 		//transform.LookAt (target);
 		//transform.Translate (Vector2.MoveTowards);
-		Life();
+		if (target.name == "Player")
+		{
+			//print(GameObject.Find("Player"));
+			Life();
+		}
+		else
+		{
+			target = GameObject.Find("Player");
 
+
+
+		}
 
 		if (flip)
 		{
@@ -38,68 +60,55 @@ public class followplayer : MonoBehaviour {
 		}
 	
 	}
+
+
 	void Life()
 	{
+		
 		switch (health.health) 
 		{
 		case 100:
-			targetx = target.transform.position.x;
-			x = transform.position.x;
-			if(x >= targetx)//link
-			{
-				x += -speed;
-				//Xpos++;
-				flip = false;
-
-			}else if(x <= targetx)//rechts
-			{
-				x += speed;
-				flip = true;
-			}
-			transform.position = new Vector2 (x, transform.position.y);
+		
+			
 
 			break;
 		case  50:
-			Debug.Log ("hat");
-			targetx = target.transform.position.x;
-			x = transform.position.x;
-			if(x >= targetx)//link
-			{
-				x += -speed;
-				//Xpos++;
-				flip = false;
 
-			}else if(x <= targetx)//rechts
-			{
-				x += speed;
-				flip = true;
-			}
-			transform.position = new Vector2 (x, transform.position.y);
 
 			break;
 		case  0:
+			Destroy (this.gameObject);
+			SpriteChange ();
 			Debug.Log ("switch");
-			targety =follow.transform.position.x;
-			y = transform.position.x;
-			if(y >= targety)//link
-			{
-				y += -speed;
-				//Xpos++;
-				flip = false;
+			SpanwEnemy ();
 
-			}else if(y <= targety)//rechts
-			{
-				y += speed;
-				flip = true;
-			}
-			transform.position = new Vector2 (y, transform.position.y);
-
-			//targetx.transform.position.x += distance;
 			break;
 		default:
 			Debug.Log("error");
 			break;
 		}
 
+		if (x >= targetx && targetx >= x + lookingfield * -1)//link
+		{
+			x += -speed;
+			//Xpos++;
+			flip = false;
+
+		}
+		else if (x <= targetx && targetx <= x + lookingfield)//rechts
+		{
+			x += speed;
+			flip = true;
+		}
+		transform.position = new Vector2(x, transform.position.y);
+
+	}
+	void SpriteChange(){
+		sr.sprite = friendly;
+	}
+	void SpanwEnemy()
+	{
+		spanwer = GameObject.Find("following").transform;
+		Instantiate (Freindly, spanwer.position, Quaternion.identity);
 	}
 }

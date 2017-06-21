@@ -7,11 +7,22 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/scene/menu.unity
+    guid: 5228aa332fa87d3468b0560bab468990
   - enabled: 1
     path: Assets/scene/main.unity
+    guid: 73cff5e67b58b7745825bbbb652bca52
   - enabled: 1
     path: Assets/scene/win.unity
+    guid: 897bf62f992e94d4a844b498aa19a0b1
   - enabled: 1
+    path: Assets/scene/losescene.unity
+    guid: cd315356ec6bcd64eaa035cf5def801d
+  - enabled: 0
     path: Assets/scene/lose.unity
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/scene/lose.unity
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/scene/losescene.unity
+    guid: cd315356ec6bcd64eaa035cf5def801d

@@ -1,10 +1,32 @@
 fileFormatVersion: 2
 guid: 9c5b21d77e9a59947ad50c758268e678
-timeCreated: 1496306961
+timeCreated: 1496911783
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - idlesprite_1: {fileID: 21300000, guid: c86179ea13d59ed46b89d038158e3ad9, type: 3}
+  - idlesprite_2: {fileID: 21300000, guid: 295953df0e023ea44ad950746460d35a, type: 3}
+  - walkingsprite_1: {fileID: 21300000, guid: 2381441378f1f8445a917cf50a388475, type: 3}
+  - walkingsprite_2: {fileID: 21300000, guid: 6879c82b77b49b5438bf7b571503d01d, type: 3}
+  - walkingsprite_3: {fileID: 21300000, guid: 003bcd41c50fc214bbbcf3ca911b8f4d, type: 3}
+  - walkingsprite_4: {fileID: 21300000, guid: c6943f9d7ef992c4cbf71fbf44969439, type: 3}
+  - walkingsprite_5: {fileID: 21300000, guid: d6e650620f3b0024b9b163f06a34a699, type: 3}
+  - walkingsprite_6: {fileID: 21300000, guid: c7508ba220e527541ae2ec514a17e087, type: 3}
+  - walkingsprite_7: {fileID: 21300000, guid: 6e8630bf913b55c47b8629e0a29d4175, type: 3}
+  - walkingsprite_8: {fileID: 21300000, guid: 2522166d59ce8ed48956c708e9f5b90d, type: 3}
+  - shootingsprite_1: {fileID: 21300000, guid: 6ca56cbc78b94e044ad37e526aacee51, type: 3}
+  - shootingsprite_2: {fileID: 21300000, guid: 4ea202075ae31d142946948d93feac15, type: 3}
+  - shootingsprite_3: {fileID: 21300000, guid: 8f44538ae2d93604e92977aa56d59510, type: 3}
+  - shootingsprite_4: {fileID: 21300000, guid: 4939dfe89012ffb4f8dfe520586360a2, type: 3}
+  - shootingsprite_5: {fileID: 21300000, guid: 4f7e3e145d3caa4458d92a02f46d7f5f, type: 3}
+  - hurtingsprite_1: {fileID: 21300000, guid: 3e1972d4b82b37f4d8bcc8e7244ab396, type: 3}
+  - hurtingsprite_2: {fileID: 21300000, guid: 35c83392eff864d4a8d3401c75b85f73, type: 3}
+  - jumpingsprite_1: {fileID: 21300000, guid: e90f85557d909da4dba05ae37b51371d, type: 3}
+  - jumpingsprite_2: {fileID: 21300000, guid: 8fb55c150ccbcef40bcabea5c302cd70, type: 3}
+  - jumpingsprite_3: {fileID: 21300000, guid: 3c50172741931fa40b27c1bd753506f6, type: 3}
+  - jumpingsprite_4: {fileID: 21300000, guid: 2dbc0faae49ac1040b826d4eb5b98265, type: 3}
+  - jumpingsprite_5: {fileID: 21300000, guid: 4f7e3e145d3caa4458d92a02f46d7f5f, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

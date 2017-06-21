@@ -8,6 +8,9 @@ TagManager:
   - Shootingstar
   - target
   - enemy
+  - player
+  - friendly
+  - following
   layers:
   - Default
   - TransparentFX

@@ -6,35 +6,91 @@ public class PlayerInput_reloaded : MonoBehaviour {
 
 		public bool _wait = false;
 		Rigidbody2D _rigidbody;
-		public float _timer1 = 0.15f;
-		public float _timer2 = 0.05f;
-		public float _timer3 = 0.1f;
-		public float _timer4 = 0.25f;
-		public float _timer5 = 0.5f;
-		public float _timer6 = 0;
-		public float _timer7 = 0;
+		public float _timeridle = 0.15f;
+		public float _timerwalking = 0.05f;
+		public float _timershootinganimatie = 0.1f;
+		public float _timerjumping = 0.25f;
+		public float _timershooting = 0.5f;
+		public float _timerhurting = 0;
+		public float _timerlanded = 0;
 		private int counter = 0;
 		public bool flip;
 		public Anamation _palyerAnimation;
 
-		public Shooting _playerShoot;
+        public AudioClip Jumpsound;
+        public AudioClip WalkingSound;
+        private AudioSource source;
+        private float _VolSound = 1.0f;
+        public float _VolDelay = 1.0f;
 
-		enum States { IDLE, WALKING, SHOOTING, JUMPING, HURTING, LANDED };
-		States currentState;
 
+		public float moveSpeed = 0.5f;
+		float moveSpeedCurrent = 0;
+		public float moveSpeedDecfactor = 0.95f;
+		public float moveSpeedMax = 10;
+		public float jumpingforce;
+
+	public GameObject platform;	
+
+		float timeridle;
+		float timerwalking;
+		float timershootinganimatie;
+		float timerjumping;
+		float timershooting;
+		float timerhurting;
+		float timerlanded;
+
+	//public GameObject platform;
 		
 
-		void Start()
+		float xPrevious;
+		float yPrevious;
+
+
+		public Shooting _playerShoot;
+
+		public enum States { IDLE, WALKING, SHOOTING, JUMPING, HURTING, LANDED };
+		public States currentState;
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+        
+    }
+    
+        
+    
+
+    void Start()
 		{
+		moveSpeedCurrent = moveSpeedCurrent / 100;
+		moveSpeed = moveSpeed / 100;
+		moveSpeedMax = moveSpeedMax / 100;
+		//moveSpeedDecfactor = moveSpeedDecfactor / 100;
+
+
+
+		timeridle = _timeridle;
+		timerwalking = _timerwalking;
+		timershootinganimatie = _timershootinganimatie;
+		timerjumping = _timerjumping;
+		timershooting = _timershooting;
+		timerhurting = _timerhurting;
+		timerlanded = _timerlanded;
+
 		_wait = true;
-		_timer6 += Time.deltaTime;
 		_rigidbody = GetComponent<Rigidbody2D>();
-		currentState = States.HURTING;
-		_timer7 = 1f;
-		}
+		currentState = States.IDLE;
+		_timerlanded = 0f;
+
+		
+	}
 
 		void Update()
 		{
+		xPrevious = transform.position.x;
+		yPrevious = transform.position.y;
+
 
 		if (flip)
 		{
@@ -49,33 +105,57 @@ public class PlayerInput_reloaded : MonoBehaviour {
 		if (Input.GetAxis("Horizontal") > 0 && _wait == false)
 		{
 			//doe voorwaards
+			moveSpeedCurrent += moveSpeed;
+
+			if (moveSpeedCurrent >= moveSpeedMax)
+			{
+				moveSpeedCurrent = moveSpeedMax;
+			}
+			
 			currentState = States.WALKING;
 			flip = false;
-			
+
 		}
 		else if (Input.GetAxis("Horizontal") < 0 && _wait == false)
 		{
 
 			//doe achterwaards
+			moveSpeedCurrent -= moveSpeed;
+
+			if (moveSpeedCurrent <= -moveSpeedMax)
+			{
+				moveSpeedCurrent = -moveSpeedMax;
+			}
 			currentState = States.WALKING;
 			flip = true;
-			
+
 		}
 		else if (currentState == States.WALKING)
 		{
 			currentState = States.IDLE;
+		}
+		else
+		{
+			moveSpeedCurrent *= moveSpeedDecfactor;
+			
+			if (moveSpeedCurrent >= -moveSpeed && moveSpeedCurrent <= moveSpeed)
+			{
+				//moveSpeedCurrent = 0;
+			}
 		}
 
 
 		if (Input.GetAxis("Vertical") > 0 && _wait == false)
 		{
 			//doe jumping
+			
 			_palyerAnimation.index = 1;
 			currentState = States.JUMPING;
 			_wait = true;
+            source.PlayDelayed(_VolDelay);
 
 
-		}
+        }
 		else if (Input.GetAxis("Vertical") < 0)
 		{
 
@@ -84,33 +164,35 @@ public class PlayerInput_reloaded : MonoBehaviour {
 		}
 
 
-		if (_timer5 < 0)
+		if (_timershooting < 0)
 		{
 			if (Input.GetAxis("Fire1") == 1 && _wait == false)
 			{
 				//schieten
+				
 				_palyerAnimation.index = 1;
 				currentState = States.SHOOTING;
-				_timer5 = 0.5f;
+				_timershooting = timershooting;
 			}
 		}
 		else
 		{
-			_timer5 -= Time.deltaTime;
+			_timershooting -= Time.deltaTime;
 		}
 
 
 		switch (currentState) {
-
-			case States.HURTING:
+			case States.LANDED:
 				_wait = true;
-				if (_timer7 < 0) {
-					_palyerAnimation.Playbeinghit();
+				if (_timerlanded < 0)
+				{
+					_palyerAnimation.PlayLanded();
 					counter++;
-					_timer7 = 0.1f;
+					_timerlanded = timerlanded;
 				}
-				else {
-					_timer7 -= Time.deltaTime;
+				else
+				{
+					_timerlanded -= Time.deltaTime;
 				}
 
 				if (counter > 2)
@@ -119,52 +201,70 @@ public class PlayerInput_reloaded : MonoBehaviour {
 					counter = 0;
 					_wait = false;
 				}
-				/*if (_timer4 < 0)
+				break;
+
+			case States.HURTING:
+				_wait = true;
+				if (_timerhurting < 0) {
+					_palyerAnimation.Playbeinghit();
+					counter++;
+					_timerhurting = timerhurting;
+				}
+				else {
+					_timerhurting -= Time.deltaTime;
+				}
+
+				if (counter > 2)
 				{
 					currentState = States.IDLE;
+					counter = 0;
+					_wait = false;
 				}
-				else
-				{
-					//currentState = States.IDLE;
-					_timer4 -= Time.deltaTime;
-				}*/
 				break;
 
 			case States.IDLE:
-					if (_timer1 < 0)
+					if (_timeridle < 0)
 					{
 					_palyerAnimation.Playidle();
-					_timer1 = 0.5f;
+					_timeridle = timeridle;
 					}
 					else
 					{
-					_timer1-= Time.deltaTime;
+					_timeridle -= Time.deltaTime;
 					}
 				break;
 
 				case States.WALKING:
-					if (_timer2 < 0)
+					if (_timerwalking < 0)
 					{
 					_palyerAnimation.Playwalking();
-					_timer2 = 0.05f;
+					_timerwalking = timerwalking;
 					}
 					else
 					{
-					_timer2 -= Time.deltaTime;
+					_timerwalking -= Time.deltaTime;
 					}
 				break;
 
 				case States.JUMPING:
-					if (_timer2 < 0)
+					if (_timerjumping < 0)
 					{
 					_palyerAnimation.Playjumping();
 
-					_timer2 = 0.2f;
+					_timerjumping = timerjumping;
+					
 					}
 					else
 					{
-					_timer2 -= Time.deltaTime;
+					_timerjumping -= Time.deltaTime;
 					}
+
+				if (_palyerAnimation.index == 3) {
+					_rigidbody.AddForce(transform.up * jumpingforce);
+					_rigidbody.AddForce(transform.right * (jumpingforce / 4));
+                    
+                    
+				}
 				break;
 
 			case States.SHOOTING:
@@ -173,39 +273,44 @@ public class PlayerInput_reloaded : MonoBehaviour {
 					currentState = States.IDLE;
 					//_palyerAnimation.index = 1;
 					}
-				if (_timer3 < 0)
+				if (_timershootinganimatie < 0)
 					{
 					_palyerAnimation.Playshooting();
-					if (_palyerAnimation.index == 4)
+					if (_palyerAnimation.index == 3)
 					{
 						_playerShoot.Shoot();
-					} 
-					_timer3 = 0.07f;
+					}
+					_timershootinganimatie = timershootinganimatie;
 					}
 					else
 					{
-					_timer3 -= Time.deltaTime;
+					_timershootinganimatie -= Time.deltaTime;
 					}
 				break;
 
 			}
-		print(currentState);
-		//print(_palyerAnimation.index);
+
+		//print(moveSpeedCurrent);
+		transform.position = new Vector3(xPrevious + moveSpeedCurrent, yPrevious, 0);
 	}
 
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		//print("fucking normal fags");
-		if (other.gameObject.tag == "Ground" || other.gameObject.tag == "enemy")
+		if ((other.gameObject.tag == "Ground" || other.gameObject.tag == "enemy" || other.gameObject.tag == "friendly") && transform.position.y > other.transform.position.y)
 		{
 			if (currentState == States.JUMPING)
 			{
+				_timerlanded = 0f;
 				currentState = States.LANDED;
-				_timer4 = 0.25f;
 
 			}
 			_wait = false;
+		}
+		else
+		{
+
 		}
 	}
 }

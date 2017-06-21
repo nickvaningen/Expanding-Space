@@ -16,16 +16,9 @@ public class hitpoints : MonoBehaviour {
 		if (other.gameObject.tag == "Shootingstar"){
 			health -= _damage;
 		}
-		//if (other.gameObject.tag == "player") {
-		//	Destroy (this.gameObject);
-		//}
 		if (health < 0) {
 		  Destroy (this.gameObject);
 		}
-		//if (_hitpoints < 50) {
-		//	Debug.Log (_hitpoints);
-		//}
-
 	}
 
 

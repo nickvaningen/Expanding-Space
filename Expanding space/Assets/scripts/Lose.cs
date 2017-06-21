@@ -7,14 +7,14 @@ public class Lose : MonoBehaviour
 {
 
 	[SerializeField]
-	private string loadlosescene;
+	private int sceneIndex;
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
 	
-		if (other.CompareTag ("Player")) 
+		if (other.CompareTag ("player")) 
 		{
-			SceneManager.LoadScene (loadlosescene);
+			SceneManager.LoadScene(sceneIndex);
 		}
 	
 	}

@@ -15,6 +15,9 @@ public class Anamation : MonoBehaviour {
 	public Sprite walkingsprite_3;
 	public Sprite walkingsprite_4;
 	public Sprite walkingsprite_5;
+	public Sprite walkingsprite_6;
+	public Sprite walkingsprite_7;
+	public Sprite walkingsprite_8;
 
 	public Sprite shootingsprite_1;
 	public Sprite shootingsprite_2;
@@ -28,6 +31,8 @@ public class Anamation : MonoBehaviour {
 	public Sprite jumpingsprite_1;
 	public Sprite jumpingsprite_2;
 	public Sprite jumpingsprite_3;
+	public Sprite jumpingsprite_4;
+	public Sprite jumpingsprite_5;
 
 
 	public float timer = 0;
@@ -35,7 +40,18 @@ public class Anamation : MonoBehaviour {
 
 	public void PlayLanded()
 	{
-		GetComponent<SpriteRenderer>().sprite = jumpingsprite_3;
+		if (index == 1)
+		{
+			GetComponent<SpriteRenderer>().sprite = jumpingsprite_5;
+			//print("allo");
+		}
+		else if (index == 2)
+		{
+			GetComponent<SpriteRenderer>().sprite = jumpingsprite_5;
+			//print("allo 2");
+		}
+		else { index = 0; }
+		index++;
 	}
 
 	// Use this for initialization
@@ -73,8 +89,17 @@ public class Anamation : MonoBehaviour {
 			case 5:
 				GetComponent<SpriteRenderer>().sprite = walkingsprite_5;
 				break;
+			case 6:
+				GetComponent<SpriteRenderer>().sprite = walkingsprite_6;
+				break;
+			case 7:
+				GetComponent<SpriteRenderer>().sprite = walkingsprite_7;
+				break;
+			case 8:
+				GetComponent<SpriteRenderer>().sprite = walkingsprite_8;
+				break;
 		}
-		if (index > 5) {
+		if (index > 7) {
 			index = 1;
 		} else {
 			index++;
@@ -99,8 +124,9 @@ public class Anamation : MonoBehaviour {
 			case 5:
 				GetComponent<SpriteRenderer>().sprite = shootingsprite_5;
 				break;
+
 		}
-		if (index > 5)
+		if (index > 4)
 		{
 			index = 1;
 		}
@@ -123,7 +149,7 @@ public class Anamation : MonoBehaviour {
 		}
 		else { index = 0; }
 		index++;
-		print(index);
+		//print(index);
 	}
 
 	public void Playjumping()
@@ -135,9 +161,12 @@ public class Anamation : MonoBehaviour {
 			case 2:
 				GetComponent<SpriteRenderer>().sprite = jumpingsprite_2;
 				break;
+			case 3:
+				GetComponent<SpriteRenderer>().sprite = jumpingsprite_3;
+				break;
 		}
-		if (index >= 2) {
-			index = 2;
+		if (index >= 4) {
+			index = 4;
 		}
 		else
 		{

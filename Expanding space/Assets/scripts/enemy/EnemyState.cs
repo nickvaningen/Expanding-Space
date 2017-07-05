@@ -68,43 +68,8 @@ public class EnemyState : MonoBehaviour {
 		targetx = player.transform.position.x;
 		targety = player.transform.position.y;
 
-
-
-
-		if (flip)
+		switch (_EnemyCurrentState)
 		{
-
-			gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-		}
-		else if (!flip)
-		{
-
-			gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-		}
-
-		if (x >= targetx && targetx >= x + lookingfield * -1)//link
-		{
-
-			_EnemyCurrentState = Enemystate.Walking;
-			flip = false;
-			print("hallo");
-		}
-		else if (x <= targetx && targetx <= x + lookingfield)//rechts
-		{
-			print("hallo 2");
-			_EnemyCurrentState = Enemystate.Walking;
-			flip = true;
-		}
-		else
-		{
-			_EnemyCurrentState = Enemystate.Idle;
-		}
-
-
-
-
-
-		switch (_EnemyCurrentState) {
 			case Enemystate.Idle:
 				if (_timeridle < 0)
 				{
@@ -137,10 +102,59 @@ public class EnemyState : MonoBehaviour {
 
 				break;
 			case Enemystate.Jumping:
-
+				if (_timerjumping < 0)
+				{
+					_EnemyAnimation.PlayJump();
+					_timerjumping = timerjumping;
+				}
+				else
+				{
+					_timerjumping -= Time.deltaTime;
+				}
 				break;
 		}
 
-		print(flip);
+
+
+
+		if (flip)
+		{
+
+			gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+		}
+		else if (!flip)
+		{
+
+			gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
+
+		if (x >= targetx + 0.5f && targetx >= x + lookingfield * -1)//link
+		{
+
+			_EnemyCurrentState = Enemystate.Walking;
+			flip = false;
+			//print("hallo");
+		}
+		else if (x <= targetx - 0.5f && targetx <= x + lookingfield)//rechts
+		{
+			//print("hallo 2");
+			_EnemyCurrentState = Enemystate.Walking;
+			flip = true;
+		}
+		else
+		{
+			_EnemyCurrentState = Enemystate.Idle;
+		}
+
+		if (y < targetx)
+		{
+			//_EnemyCurrentState = Enemystate.Jumping;
+		}
+
+
+
+		
+
+		//print(flip);
 	}
 }

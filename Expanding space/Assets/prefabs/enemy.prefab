@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149393279785874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.39, y: -3.11, z: -1.2857246}
+  m_LocalPosition: {x: 3.8863106, y: -3.2035666, z: -1.2857246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -135,6 +135,7 @@ MonoBehaviour:
   flip: 0
   health: {fileID: 114096868027558688}
   lookingfield: 15
+  toggeler: {fileID: 0}
 --- !u!114 &114922467330552738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,8 +170,8 @@ MonoBehaviour:
   walkingsprite_6: {fileID: 21300014, guid: 4ed1e8e46471f1a429d594648760487e, type: 3}
   walkingsprite_7: {fileID: 21300016, guid: 4ed1e8e46471f1a429d594648760487e, type: 3}
   walkingsprite_8: {fileID: 21300018, guid: 4ed1e8e46471f1a429d594648760487e, type: 3}
-  hitSprite_1: {fileID: 0}
-  hitSprite_2: {fileID: 0}
+  hitSprite_1: {fileID: 21300000, guid: 61b5aeb91ee18dd4b9103c10c5bed7b2, type: 3}
+  hitSprite_2: {fileID: 21300000, guid: 7df9d2f0cf0fc8d4db8f6545f8e93bee, type: 3}
 --- !u!212 &212920700654354876
 SpriteRenderer:
   m_ObjectHideFlags: 1

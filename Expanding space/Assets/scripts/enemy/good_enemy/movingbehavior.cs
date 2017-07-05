@@ -17,18 +17,35 @@ public class movingbehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		targetx = GameObject.FindWithTag("following").transform.position.x;
+		targetx = GameObject.Find("Player").transform.position.x;
 		x = transform.position.x;
-		print (targetx);
-		if(x >= targetx)//link
+
+		if (flip)
+		{
+
+			gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+		}
+		else if (!flip)
+		{
+
+			gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+		}
+
+		//print (targetx);
+		if (x >= targetx - 3f)//link
 		{
 			x += -speed;
 			flip = false;
 
-		}else if(x <= targetx)//rechts
+		}
+		else if (x <= targetx - 4f )//rechts
 		{
 			x += speed;
 			flip = true;
+		}
+		else
+		{
+			//flip = true;
 		}
 		transform.position = new Vector2 (x, transform.position.y);
 

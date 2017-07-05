@@ -7,7 +7,7 @@ public class destroytimer : MonoBehaviour {
 	public GameObject bullet;
 	void Start () 
 	{
-		Destroy (bullet, 5f);
+		Destroy (bullet, 1f);
 	}
 	void OnCollisionEnter2D (Collision2D other)
 	{

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: fdafda2cc70bc014b819136f2c1f3b57
+timeCreated: 1498636790
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: A Star is Born
+  fontNames:
+  - A Star is Born
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

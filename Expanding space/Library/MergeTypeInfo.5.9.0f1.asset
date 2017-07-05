@@ -9,6 +9,7 @@ MergeTypeInfo:
 - {id: 1045, name: EditorBuildSettings, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 2, name: Component, ismulti: 0, baseid: 18, requires: '', conflicts: ''}
 - {id: 111, name: Animation, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
+- {id: 95, name: Animator, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
 - {id: 81, name: AudioListener, ismulti: 0, baseid: 180, requires: 04000000, conflicts: ''}
 - {id: 82, name: AudioSource, ismulti: 1, baseid: 180, requires: 04000000, conflicts: ''}
 - {id: 166, name: AudioChorusFilter, ismulti: 0, baseid: 181, requires: b4000000,
@@ -30,11 +31,12 @@ MergeTypeInfo:
 - {id: 61, name: BoxCollider2D, ismulti: 1, baseid: 53, requires: 04000000, conflicts: 3600000038000000390000004b000000}
 - {id: 70, name: CapsuleCollider2D, ismulti: 1, baseid: 53, requires: 04000000, conflicts: 3600000038000000390000004b000000}
 - {id: 58, name: CircleCollider2D, ismulti: 1, baseid: 53, requires: 04000000, conflicts: 3600000038000000390000004b000000}
+- {id: 66, name: CompositeCollider2D, ismulti: 0, baseid: 53, requires: 0400000032000000,
+  conflicts: 3600000038000000390000004b000000}
 - {id: 68, name: EdgeCollider2D, ismulti: 1, baseid: 53, requires: 04000000, conflicts: 3600000038000000390000004b000000}
 - {id: 60, name: PolygonCollider2D, ismulti: 1, baseid: 53, requires: 04000000, conflicts: 3600000038000000390000004b000000}
 - {id: 75, name: ConstantForce, ismulti: 0, baseid: 8, requires: 0400000036000000,
   conflicts: 3200000035000000e6000000}
-- {id: 95, name: Animator, ismulti: 0, baseid: 320, requires: '', conflicts: ''}
 - {id: 249, name: AreaEffector2D, ismulti: 0, baseid: 248, requires: '', conflicts: 3600000038000000f8000000}
 - {id: 253, name: BuoyancyEffector2D, ismulti: 0, baseid: 248, requires: '', conflicts: 3600000038000000f8000000}
 - {id: 251, name: PlatformEffector2D, ismulti: 0, baseid: 248, requires: '', conflicts: 3600000038000000f8000000}
@@ -78,7 +80,9 @@ MergeTypeInfo:
 - {id: 119, name: Projector, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
 - {id: 215, name: ReflectionProbe, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
 - {id: 45, name: Skybox, ismulti: 1, baseid: 8, requires: '', conflicts: ''}
+- {id: 210, name: SortingGroup, ismulti: 0, baseid: 8, requires: 04000000, conflicts: ''}
 - {id: 218, name: Terrain, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
+- {id: 328, name: VideoPlayer, ismulti: 1, baseid: 8, requires: 04000000, conflicts: ''}
 - {id: 182, name: WindZone, ismulti: 0, baseid: 8, requires: '', conflicts: ''}
 - {id: 222, name: CanvasRenderer, ismulti: 0, baseid: 2, requires: '', conflicts: ''}
 - {id: 65, name: BoxCollider, ismulti: 1, baseid: 56, requires: 04000000, conflicts: 3200000035000000e6000000}
@@ -136,13 +140,12 @@ MergeTypeInfo:
 - {id: 1109, name: AnimatorTransition, ismulti: 0, baseid: 1111, requires: '', conflicts: ''}
 - {id: 142, name: AssetBundle, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 290, name: AssetBundleManifest, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
-- {id: 1053, name: ASTCImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1020, name: AudioImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1008, name: ComputeShaderImporter, ismulti: 0, baseid: 1003, requires: '',
   conflicts: ''}
-- {id: 1046, name: DDSImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1030, name: DefaultImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
-- {id: 1054, name: KTXImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
+- {id: 1055, name: IHVImageFormatImporter, ismulti: 0, baseid: 1003, requires: '',
+  conflicts: ''}
 - {id: 1038, name: LibraryAssetImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1041, name: FBXImporter, ismulti: 0, baseid: 1040, requires: '', conflicts: ''}
 - {id: 1005, name: Mesh3DSImporter, ismulti: 0, baseid: 1040, requires: '', conflicts: ''}
@@ -150,7 +153,6 @@ MergeTypeInfo:
 - {id: 1035, name: MonoImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1044, name: MovieImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1034, name: NativeFormatImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
-- {id: 1052, name: PVRImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1050, name: PluginImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1007, name: ShaderImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1110, name: SpeedTreeImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
@@ -158,6 +160,7 @@ MergeTypeInfo:
 - {id: 1031, name: TextScriptImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1006, name: TextureImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 1042, name: TrueTypeFontImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
+- {id: 1127, name: VideoClipImporter, ismulti: 0, baseid: 1003, requires: '', conflicts: ''}
 - {id: 240, name: AudioMixer, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 241, name: AudioMixerController, ismulti: 0, baseid: 240, requires: '', conflicts: ''}
 - {id: 244, name: AudioMixerEffectController, ismulti: 0, baseid: 130, requires: '',
@@ -169,7 +172,7 @@ MergeTypeInfo:
 - {id: 245, name: AudioMixerSnapshotController, ismulti: 0, baseid: 272, requires: '',
   conflicts: ''}
 - {id: 90, name: Avatar, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
-- {id: 1011, name: AvatarMask, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
+- {id: 319, name: AvatarMask, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 118, name: NewAnimationTrack, ismulti: 0, baseid: 110, requires: '', conflicts: ''}
 - {id: 226, name: BillboardAsset, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 1125, name: BuildReport, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
@@ -187,6 +190,7 @@ MergeTypeInfo:
 - {id: 185, name: ProceduralMaterial, ismulti: 0, baseid: 21, requires: '', conflicts: ''}
 - {id: 43, name: Mesh, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 74, name: AnimationClip, ismulti: 0, baseid: 207, requires: '', conflicts: ''}
+- {id: 1108, name: PreviewAnimationClip, ismulti: 0, baseid: 74, requires: '', conflicts: ''}
 - {id: 206, name: BlendTree, ismulti: 0, baseid: 207, requires: '', conflicts: ''}
 - {id: 238, name: NavMeshData, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 363, name: OcclusionCullingData, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
@@ -209,15 +213,19 @@ MergeTypeInfo:
 - {id: 109, name: CGProgram, ismulti: 0, baseid: 49, requires: '', conflicts: ''}
 - {id: 115, name: MonoScript, ismulti: 0, baseid: 49, requires: '', conflicts: ''}
 - {id: 152, name: MovieTexture, ismulti: 0, baseid: 237, requires: '', conflicts: ''}
+- {id: 158, name: WebCamTexture, ismulti: 0, baseid: 237, requires: '', conflicts: ''}
 - {id: 188, name: CubemapArray, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
+- {id: 1480428607, name: LowerResBlitTexture, ismulti: 0, baseid: 27, requires: '',
+  conflicts: ''}
 - {id: 186, name: ProceduralTexture, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
 - {id: 84, name: RenderTexture, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
+- {id: 86, name: CustomRenderTexture, ismulti: 0, baseid: 84, requires: '', conflicts: ''}
 - {id: 171, name: SparseTexture, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
 - {id: 28, name: Texture2D, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
 - {id: 89, name: Cubemap, ismulti: 0, baseid: 28, requires: '', conflicts: ''}
 - {id: 187, name: Texture2DArray, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
 - {id: 117, name: Texture3D, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
-- {id: 158, name: WebCamTexture, ismulti: 0, baseid: 27, requires: '', conflicts: ''}
+- {id: 329, name: VideoClip, ismulti: 0, baseid: 130, requires: '', conflicts: ''}
 - {id: 1002, name: EditorExtensionImpl, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 159, name: EditorSettings, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
 - {id: 1051, name: EditorUserBuildSettings, ismulti: 0, baseid: 0, requires: '', conflicts: ''}
@@ -234,6 +242,8 @@ MergeTypeInfo:
 - {id: 116, name: MonoManager, ismulti: 0, baseid: 6, requires: '', conflicts: ''}
 - {id: 126, name: NavMeshProjectSettings, ismulti: 0, baseid: 6, requires: '', conflicts: ''}
 - {id: 149, name: NetworkManager, ismulti: 0, baseid: 6, requires: '', conflicts: ''}
+- {id: 305, name: PerformanceReportingManager, ismulti: 0, baseid: 6, requires: '',
+  conflicts: ''}
 - {id: 19, name: Physics2DSettings, ismulti: 0, baseid: 6, requires: '', conflicts: ''}
 - {id: 55, name: PhysicsManager, ismulti: 0, baseid: 6, requires: '', conflicts: ''}
 - {id: 129, name: PlayerSettings, ismulti: 0, baseid: 6, requires: '', conflicts: ''}

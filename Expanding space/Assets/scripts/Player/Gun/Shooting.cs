@@ -10,7 +10,12 @@ public class Shooting : MonoBehaviour
 	private float vollowRange = .5f;
 	private float volhighRange = 1.0f;
 	private float volhighScale = 1.0f;
+	[SerializeField]
 	Vector2 _GunOffset;
+	[SerializeField]
+	float GunOffSetY;
+	[SerializeField]
+	float GunOffSetX;
 
 
 	public GameObject projectile;
@@ -30,20 +35,20 @@ public class Shooting : MonoBehaviour
 	{
 		_GunOffset = transform.position;
 		//_GunOffset.x += 0.5f;
-		_GunOffset.y += 0.1f;
+		//_GunOffset.y += 0.1f;
 		GameObject throwThis = Instantiate(projectile, _GunOffset, transform.rotation) as GameObject;
 		throwThis.GetComponent<Rigidbody2D>().AddForce(transform.right * shootingSpeed);
 
 
 		if (Player.GetComponent<PlayerInput_reloaded>().flip)
 		{
-			//_GunOffset.x += 2f;
+			_GunOffset.x += GunOffSetX;
 			throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-shootingSpeed, 0));
 			
 		}
 		else if (!Player.GetComponent<PlayerInput_reloaded>().flip)
 		{
-			//_GunOffset.x += 1f;
+			_GunOffset.x -= GunOffSetX;
 			throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(shootingSpeed, 0));
 		}
 		//throwThis.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(-shootingSpeed,0));

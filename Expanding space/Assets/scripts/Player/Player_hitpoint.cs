@@ -22,6 +22,7 @@ public class Player_hitpoint : MonoBehaviour {
 	public GameObject Enemy;
     public LoadScenes dead;
     public int sceneIndex;
+	[SerializeField]
 
 	void Update () {
 		if (health < 0)
@@ -45,10 +46,11 @@ public class Player_hitpoint : MonoBehaviour {
 				break;
 		}
 		//print(health);
-
+		
+		
 		if (timer > 0)
 		{
-			timer -= Time.deltaTime;
+			//timer -= Time.deltaTime;
 		}
 	}
 
@@ -58,10 +60,12 @@ public class Player_hitpoint : MonoBehaviour {
 			if (other.gameObject.tag == "enemy" && player.GetComponent<PlayerInput_reloaded>().currentState != PlayerInput_reloaded.States.HURTING)
 			{
 				player.GetComponent<PlayerInput_reloaded>().currentState = PlayerInput_reloaded.States.HURTING;
-				print("hiya!");
+				//print("hiya!");
 				health -= _damage;
 				player.GetComponent<Rigidbody2D>().AddForce(transform.right * _Pushbackforce);
-				timer = 0.5f;
+				Enemy.GetComponent<Rigidbody2D>().AddForce(transform.right * _Pushbackforce);
+				timer = 2f;
+				
 
 			}
 
@@ -75,6 +79,6 @@ public class Player_hitpoint : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D other)
 	{
-		timer = 0;
+		//timer = 0;
 	}
 }
